@@ -1,0 +1,48 @@
+proof:
+  finding_id: string
+  source:
+    tool: string
+    original_id: string
+    class: string
+  target:
+    repo: string
+    commit: string
+  build:
+    recipe: string
+    image_digest: string
+  environment:
+    microvm_ver: string
+    kernel: float
+    egress_enable: boolean
+  exploit:
+    harness: string
+    inputs: {}
+  oracle:
+    kind: string
+    signal: string
+    minimal_effect: boolean
+    observed: string
+  replay:
+    seed: integer
+    deterministic: boolean
+    trace: string
+  reachability:
+    exposed: boolean
+    entrypoint: string
+    severity:
+      enum: ["Informational", "Low", "Medium", "High"]
+  dedup:
+    root_cause_hash: string
+    findings_cluster: string
+
+
+  fix:
+    patch: string
+    poc_now_fails: boolean
+    tests_pass: boolean
+  audit:
+    scope_signed_by: string
+    started: string
+    actions: string
+  verdict:
+    enum: ["Not Reproduced", "Reproduced"]

@@ -1,0 +1,20 @@
+{
+  "finding_id": "pcf-2026-0001",
+  "source": { "tool": "codex-security", "original_id": "...", "class": "CWE-787" },
+  "target": {
+    "repo": "git@...", "commit": "a1b2c3",
+    "build": { "recipe": "nix:...", "image_digest": "sha256:..." }
+  },
+  "environment": { "microvm": "fc-v1.9", "kernel": "6.x", "egress": "disabled" },
+  "exploit": { "harness": "poc.py", "inputs": ["..."], "steps": 12 },
+  "oracle": {
+    "kind": "asan", "signal": "heap-buffer-overflow",
+    "minimal_effect": true, "observed": "WRITE of size 8 at 0x..."
+  },
+  "replay": { "seed": 42, "deterministic": true, "trace": "trace.jsonl" },
+  "reachability": { "exposed": true, "entrypoint": "HTTP /upload", "severity": "high" },
+  "dedup": { "root_cause_hash": "...", "cluster": "pcf-2026-0001" },
+  "fix": { "patch": "fix.diff", "poc_now_fails": true, "tests_pass": true },
+  "audit": { "scope_signed_by": "...", "started": "...", "actions": "actions.log" },
+  "verdict": "reproduced"
+}
