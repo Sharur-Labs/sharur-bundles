@@ -1,17 +1,17 @@
-# Proof Bundle Spec
+# Sharur Bundle Spec
 
-A specification for **proof bundles**: a portable, self-contained record that a
+A specification for **Sharur bundles**: a portable, self-contained record that a
 reported security finding is real, reproducible, and (optionally) fixed.
 
 Automated security tools produce a lot of findings, and many of them are false
-positives. A proof bundle replaces "trust me, there's a bug" with the evidence a
+positives. A Sharur bundle replaces "trust me, there's a bug" with the evidence a
 reviewer needs to check it: the exact code and build, the isolated environment,
 the exploit, the oracle that confirmed the effect, a deterministic replay, an
 exposure assessment, a candidate fix, and an audit trail of what was done.
 
-## Where proof bundles come from
+## Where Sharur bundles come from
 
-Proof bundles are the output format of an **agentic vulnerability-reproduction
+Sharur bundles are the output format of an **agentic vulnerability-reproduction
 engine**: a system in which AI agents take a reported finding, try to reproduce
 it in an isolated environment, and record the result. That engine is under
 development and is **not open source**. It does not live in this repo.
@@ -30,12 +30,12 @@ read, check and consume a bundle without access to the engine that made it.
 
 | File | Purpose |
 | --- | --- |
-| [`proof-bundle-spec.yaml`](proof-bundle-spec.yaml) | **The spec.** Every section and field with its type, plus the allowed `severity` and `verdict` values. It contains types, not values. |
-| [`proof-bundle.json`](proof-bundle.json) | **An example** of a bundle written as JSON. Its `...` placeholders stand for "a string goes here". If it disagrees with the YAML, the YAML wins. |
+| [`sharur-bundle-spec.yaml`](sharur-bundle-spec.yaml) | **The spec.** Every section and field with its type, plus the allowed `severity` and `verdict` values. It contains types, not values. |
+| [`sharur-bundle.json`](sharur-bundle.json) | **An example** of a bundle written as JSON. Its `...` placeholders stand for "a string goes here". If it disagrees with the YAML, the YAML wins. |
 | [`DOCS.md`](DOCS.md) | The usage guide: a field-by-field reference, how to produce a bundle, how to review one, and the known gaps. |
 | `README.md` | This file. |
 
-## What a proof bundle contains
+## What a Sharur bundle contains
 
 A bundle is one JSON document with these sections. Each answers one question a
 reviewer would ask.
@@ -59,13 +59,13 @@ reviewer would ask.
 Look at the example, then check that a bundle has every top-level section:
 
 ```bash
-jq . proof-bundle.json
+jq . sharur-bundle.json
 
 jq -e 'def req: ["finding_id","source","target","environment","exploit","oracle",
                  "replay","reachability","dedup","fix","audit","verdict"];
        (req - keys) as $m
        | if ($m|length)==0 then "ok" else error("missing: \($m|join(","))") end' \
-   proof-bundle.json
+   sharur-bundle.json
 ```
 
 For a full walkthrough, including how to produce and review a bundle and what
@@ -92,7 +92,7 @@ contributions right now are:
 - settling the [open questions](DOCS.md#8-changes-from-earlier-drafts-and-open-questions)
   (required vs optional fields, an egress enum, a version field);
 - generating a machine-checkable schema (for example JSON Schema) from
-  `proof-bundle-spec.yaml`;
+  `sharur-bundle-spec.yaml`;
 - adding real, anonymised example bundles.
 
 Open an issue or pull request describing the change. Edit the YAML first, then

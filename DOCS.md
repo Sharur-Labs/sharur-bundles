@@ -1,14 +1,14 @@
-# Proof Bundle Documentation
+# Sharur Bundle Documentation
 
-This guide explains how to read, produce and review a proof bundle. For a short
+This guide explains how to read, produce and review a Sharur bundle. For a short
 overview of the repo, see [`README.md`](README.md).
 
 **Sources of truth**
 
-- [`proof-bundle-spec.yaml`](proof-bundle-spec.yaml): **the spec.** It defines every
+- [`sharur-bundle-spec.yaml`](sharur-bundle-spec.yaml): **the spec.** It defines every
   field name, its type and the allowed enum values. It does not contain real
   values: `string`, `integer` and `boolean` stand for *a value of that type*.
-- [`proof-bundle.json`](proof-bundle.json): **an example**, showing one way to
+- [`sharur-bundle.json`](sharur-bundle.json): **an example**, showing one way to
   write a bundle as JSON. Its `...` placeholders mean "some string goes here".
   They are not values defined by the spec.
 
@@ -37,14 +37,14 @@ example values.
 vulnerability. The tool that reported it is recorded in `source`.
 
 **Engine.** The (closed-source) agentic reproduction system that attempts to
-reproduce a finding and emits a proof bundle with the outcome. It is not part of
+reproduce a finding and emits a Sharur bundle with the outcome. It is not part of
 this repo. This guide describes what it emits, not how it works internally.
 
 **Producer and consumer.** The engine is the producer. Consumers are the people
 and tools that read bundles: security reviewers, triage and ticketing systems,
 maintainers receiving a disclosure, and auditors.
 
-**Proof bundle.** One JSON document, plus any files it references, that lets a
+**Sharur bundle.** One JSON document, plus any files it references, that lets a
 third party confirm or refute a finding without trusting the tool that reported
 it.
 
@@ -60,7 +60,7 @@ weak bundle even if every field is present.
 
 ## 2. Anatomy of a bundle
 
-The example bundle (`proof-bundle.json`) has this shape. A `"..."` stands for
+The example bundle (`sharur-bundle.json`) has this shape. A `"..."` stands for
 any string; real bundles contain real values.
 
 ```json
@@ -86,7 +86,7 @@ document plus those files. See [section 7](#7-suggested-companion-files).
 
 ## 3. Field reference
 
-Names and types below come from the spec (`proof-bundle-spec.yaml`). "Example" is
+Names and types below come from the spec (`sharur-bundle-spec.yaml`). "Example" is
 taken from the example bundle and is only illustrative.
 
 ### 3.1 Identity
@@ -267,14 +267,14 @@ jq -e 'def req: ["finding_id","source","target","environment","exploit","oracle"
                  "replay","reachability","dedup","fix","audit","verdict"];
        (req - keys) as $m
        | if ($m|length)==0 then "ok" else error("missing: \($m|join(","))") end' \
-   path/to/proof-bundle.json
+   path/to/sharur-bundle.json
 ```
 
 To confirm that the files a bundle references exist alongside it:
 
 ```bash
 dir=path/to/bundle
-for f in $(jq -r '.exploit.harness, .replay.trace, .fix.patch, .audit.actions' "$dir/proof-bundle.json"); do
+for f in $(jq -r '.exploit.harness, .replay.trace, .fix.patch, .audit.actions' "$dir/sharur-bundle.json"); do
   [ -e "$dir/$f" ] || echo "missing: $f"
 done
 ```
@@ -286,7 +286,7 @@ suggested convention, not part of the spec:
 
 ```
 pcf-2026-0001/
-├── proof-bundle.json   # the document described above
+├── sharur-bundle.json   # the document described above
 ├── poc.py              # exploit.harness
 ├── trace.jsonl         # replay.trace
 ├── fix.diff            # fix.patch
@@ -300,7 +300,7 @@ directory can be moved, archived or shared as a unit.
 
 ### Changes from the first draft of the spec
 
-The first draft of `proof-bundle-spec.yaml` did not match the JSON example, so
+The first draft of `sharur-bundle-spec.yaml` did not match the JSON example, so
 the YAML was updated to match it. If you have tooling or bundles written against
 the first draft, migrate as follows:
 
