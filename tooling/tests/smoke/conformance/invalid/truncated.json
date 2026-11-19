@@ -1,0 +1,10 @@
+{
+  "finding_id": "pcf-2026-0001",
+  "source": {
+    "tool": "hand-made-sample",
+    "original_id": "smoke-0001",
+    "class": "CWE-787"
+  },
+  "target": {
+    "repo": "bundle:target",
+    "commit": "

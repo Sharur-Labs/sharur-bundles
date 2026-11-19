@@ -1,0 +1,4 @@
+{"step": 1, "event": "exec", "argv": ["python3", "poc.py", "inputs/upload.bin"], "env": {"SHARUR_REPLAY_SEED": "42"}}
+{"step": 1, "event": "alloc", "size": 64, "address": "0x60200002a010"}
+{"step": 1, "event": "write", "offset": 64, "size": 8, "address": "0x60200002a050", "in_bounds": false}
+{"step": 1, "event": "oracle", "kind": "asan", "signal": "heap-buffer-overflow", "exit_code": 1}

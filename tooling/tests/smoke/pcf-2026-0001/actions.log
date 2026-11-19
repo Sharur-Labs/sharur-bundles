@@ -1,0 +1,5 @@
+2026-11-19T00:00:00Z scope: hand-made smoke sample; target vendored in target/, no external systems
+2026-11-19T00:00:01Z run: python3 poc.py inputs/upload.bin (SHARUR_REPLAY_SEED=42) -> exit 1, ASan heap-buffer-overflow
+2026-11-19T00:00:02Z replay: 3 runs with seed 42 -> 3/3 heap-buffer-overflow
+2026-11-19T00:00:03Z fix: applied fix.diff -> poc raises ValueError, no ASan report
+2026-11-19T00:00:04Z verdict: reproduced

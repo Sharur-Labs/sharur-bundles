@@ -1,0 +1,59 @@
+{
+  "finding_id": "pcf-2026-0001",
+  "source": {
+    "tool": "hand-made-sample",
+    "original_id": "smoke-0001",
+    "class": "CWE-787"
+  },
+  "target": {
+    "repo": "bundle:target",
+    "commit": "0000000000000000000000000000000000000000",
+    "build": {
+      "recipe": "none: pure-python simulated target vendored in target/",
+      "image_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "environment": {
+    "microvm": "none (smoke sample)",
+    "kernel": "host",
+    "egress": "disabled"
+  },
+  "exploit": {
+    "harness": "poc.py",
+    "inputs": [
+      "inputs/upload.bin"
+    ],
+    "steps": 1
+  },
+  "oracle": {
+    "kind": "asan",
+    "signal": "heap-buffer-overflow",
+    "minimal_effect": true,
+    "observed": "WRITE of size 8 at 0x60200002a050 thread T0"
+  },
+  "replay": {
+    "seed": 42,
+    "deterministic": true,
+    "trace": "../trace.jsonl"
+  },
+  "reachability": {
+    "exposed": true,
+    "entrypoint": "parse_upload(blob)",
+    "severity": "high"
+  },
+  "dedup": {
+    "root_cause_hash": "sha256:unchecked-length-copy-parse_upload",
+    "cluster": "pcf-2026-0001"
+  },
+  "fix": {
+    "patch": "fix.diff",
+    "poc_now_fails": true,
+    "tests_pass": true
+  },
+  "audit": {
+    "scope_signed_by": "sharur-bundle-spec maintainers (sample)",
+    "started": "2026-11-19T00:00:00Z",
+    "actions": "actions.log"
+  },
+  "verdict": "reproduced"
+}

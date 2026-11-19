@@ -1,0 +1,11 @@
+--- a/target/upload_parser.py
++++ b/target/upload_parser.py
+@@ -44,6 +44,8 @@
+     if not header.startswith(b"LEN "):
+         raise ValueError("missing LEN header")
+     length = int(header[4:])
++    if length < 0 or length > BUFFER_SIZE or length > len(payload):
++        raise ValueError(f"declared length {length} exceeds buffer or payload")
+     buf = HeapBuffer(BUFFER_SIZE)
+     for off in range(0, length, WORD):
+         buf.write(off, payload[off : off + WORD])
