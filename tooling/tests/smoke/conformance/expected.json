@@ -1,0 +1,343 @@
+{
+  "invalid/missing-section.json": {
+    "errors": [
+      [
+        "missing",
+        "oracle"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/missing-nested-field.json": {
+    "errors": [
+      [
+        "missing",
+        "target.build.image_digest"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/string-for-integer.json": {
+    "errors": [
+      [
+        "type",
+        "exploit.steps"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/boolean-for-integer.json": {
+    "errors": [
+      [
+        "type",
+        "replay.seed"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/integer-for-boolean.json": {
+    "errors": [
+      [
+        "type",
+        "replay.deterministic"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/number-for-string.json": {
+    "errors": [
+      [
+        "type",
+        "environment.kernel"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/string-for-list.json": {
+    "errors": [
+      [
+        "type",
+        "exploit.inputs"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/wrong-list-item-type.json": {
+    "errors": [
+      [
+        "type",
+        "exploit.inputs[1]"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/string-for-object.json": {
+    "errors": [
+      [
+        "type",
+        "target.build"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/null-field.json": {
+    "errors": [
+      [
+        "type",
+        "dedup.cluster"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/capitalised-severity.json": {
+    "errors": [
+      [
+        "enum",
+        "reachability.severity"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/critical-severity.json": {
+    "errors": [
+      [
+        "enum",
+        "reachability.severity"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/first-draft-verdict.json": {
+    "errors": [
+      [
+        "enum",
+        "verdict"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/verdict-as-object.json": {
+    "errors": [
+      [
+        "enum",
+        "verdict"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/absolute-harness-path.json": {
+    "errors": [
+      [
+        "path",
+        "exploit.harness"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/escaping-trace-path.json": {
+    "errors": [
+      [
+        "path",
+        "replay.trace"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/windows-patch-path.json": {
+    "errors": [
+      [
+        "path",
+        "fix.patch"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/first-draft-proof-wrapper.json": {
+    "errors": [
+      [
+        "missing",
+        "audit"
+      ],
+      [
+        "missing",
+        "dedup"
+      ],
+      [
+        "missing",
+        "environment"
+      ],
+      [
+        "missing",
+        "exploit"
+      ],
+      [
+        "missing",
+        "finding_id"
+      ],
+      [
+        "missing",
+        "fix"
+      ],
+      [
+        "missing",
+        "oracle"
+      ],
+      [
+        "missing",
+        "reachability"
+      ],
+      [
+        "missing",
+        "replay"
+      ],
+      [
+        "missing",
+        "source"
+      ],
+      [
+        "missing",
+        "target"
+      ],
+      [
+        "missing",
+        "verdict"
+      ]
+    ],
+    "warnings": [
+      [
+        "unknown-field",
+        "proof"
+      ]
+    ]
+  },
+  "invalid/duplicate-key.json": {
+    "errors": [
+      [
+        "duplicate-key",
+        "verdict"
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/nan-value.json": {
+    "errors": [
+      [
+        "json",
+        ""
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/not-an-object.json": {
+    "errors": [
+      [
+        "type",
+        ""
+      ]
+    ],
+    "warnings": []
+  },
+  "invalid/truncated.json": {
+    "errors": [
+      [
+        "json",
+        ""
+      ]
+    ],
+    "warnings": []
+  },
+  "warnings/short-commit.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "target.commit"
+      ]
+    ]
+  },
+  "warnings/bare-image-digest.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "target.build.image_digest"
+      ]
+    ]
+  },
+  "warnings/local-timestamp.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "audit.started"
+      ]
+    ]
+  },
+  "warnings/non-utc-timestamp.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "audit.started"
+      ]
+    ]
+  },
+  "warnings/impossible-date.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "audit.started"
+      ]
+    ]
+  },
+  "warnings/zero-steps.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "format",
+        "exploit.steps"
+      ]
+    ]
+  },
+  "warnings/egress-enabled.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "egress",
+        "environment.egress"
+      ]
+    ]
+  },
+  "warnings/placeholder-value.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "placeholder",
+        "source.original_id"
+      ]
+    ]
+  },
+  "warnings/empty-value.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "placeholder",
+        "dedup.root_cause_hash"
+      ]
+    ]
+  },
+  "warnings/unknown-fields.json": {
+    "errors": [],
+    "warnings": [
+      [
+        "unknown-field",
+        "oracle.confidence"
+      ],
+      [
+        "unknown-field",
+        "spec_version"
+      ]
+    ]
+  }
+}

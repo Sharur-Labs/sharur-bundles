@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sharur-replay"
+version = "0.1.0"
+description = "Reference verifier and replayer for Sharur bundles"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = ["cryptography>=42"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pyyaml>=6"]
+
+[project.scripts]
+sharur-replay = "replay:main"
+sharur-verify = "verify:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["replay", "verify"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
